@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using ReadData.Data;
 
 namespace ReadData
 {
@@ -6,7 +8,13 @@ namespace ReadData
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using(var db = new AppSellCourseContext()){
+                var courses = db.Course.AsNoTracking(); //array IQueryble
+                foreach (var course in courses)
+                {
+                    Console.WriteLine(course.Title + " ----- " + course.Description);
+                }
+            }
         }
     }
 }
