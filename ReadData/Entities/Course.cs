@@ -8,5 +8,8 @@ namespace ReadData.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime DatePublish { get; set; }
+
+        //Relation 1-1
+        public Price PromotionPrice { get; set; }
     }
 }

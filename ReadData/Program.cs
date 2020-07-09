@@ -9,11 +9,18 @@ namespace ReadData
         static void Main(string[] args)
         {
             using(var db = new AppSellCourseContext()){
-                var courses = db.Course.AsNoTracking(); //array IQueryble
+                
+                //Relation Data Include(entity price)
+                var courses = db.Course.Include(p => p.PromotionPrice).AsNoTracking();
                 foreach (var course in courses)
                 {
-                    Console.WriteLine(course.Title + " ----- " + course.Description);
+                   Console.WriteLine(course.Title + " ----- " + course.PromotionPrice.CurrentPrice);  
                 }
+                // var courses = db.Course.AsNoTracking(); //array IQueryble
+                // foreach (var course in courses)
+                // {
+                //     Console.WriteLine(course.Title + " ----- " + course.Description);
+                // }
             }
         }
     }
