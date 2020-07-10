@@ -10,16 +10,27 @@ namespace ReadData
         {
             using(var db = new AppSellCourseContext()){
 
-                // //Relation  one to many
-                var courses = db.Course.Include(c => c.ListComment).AsNoTracking();  
+                //Relation many to many
+                var courses = db.Course.Include(c => c.InstructorLink).ThenInclude(ci => ci.Instructor);
                 foreach (var course in courses)
                 {
                     Console.WriteLine(course.Title);
-                    foreach (var comment in course.ListComment)
+                    foreach (var isLink in course.InstructorLink)
                     {
-                        Console.WriteLine("*************" + comment.TextComment);
+                        Console.WriteLine("***********" + isLink.Instructor.Name);
                     }
                 }
+
+                // // //Relation  one to many
+                // var courses = db.Course.Include(c => c.ListComment).AsNoTracking();  
+                // foreach (var course in courses)
+                // {
+                //     Console.WriteLine(course.Title);
+                //     foreach (var comment in course.ListComment)
+                //     {
+                //         Console.WriteLine("*************" + comment.TextComment);
+                //     }
+                // }
               
                 
                 

@@ -11,6 +11,11 @@ namespace ReadData.Data
             optionsBuilder.UseSqlServer(connectionString);
         }
 
+        protected override void OnModelCreating(ModelBuilder  modelBuilder)
+        {
+            modelBuilder.Entity<InstructorCourse>().HasKey(ci => new {ci.CourseId,ci.InstructorId});
+        }
+
         public DbSet<Course> Course { get; set; }
         public DbSet<Price> Price { get; set; }
         public DbSet<Comment> Comment { get; set; }
