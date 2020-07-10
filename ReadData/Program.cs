@@ -21,6 +21,8 @@ namespace ReadData
                     }
                 }
 
+                
+
                 // // //Relation  one to many
                 // var courses = db.Course.Include(c => c.ListComment).AsNoTracking();  
                 // foreach (var course in courses)
