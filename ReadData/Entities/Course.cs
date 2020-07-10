@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ReadData.Entities
 {
@@ -9,7 +10,10 @@ namespace ReadData.Entities
         public string Description { get; set; }
         public DateTime DatePublish { get; set; }
 
-        //Relation 1-1
+        //Relation one to one
         public Price PromotionPrice { get; set; }
+
+        //Relation one to many
+        public ICollection<Comment> ListComment { get; set; }
     }
 }

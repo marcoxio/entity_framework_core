@@ -13,5 +13,6 @@ namespace ReadData.Data
 
         public DbSet<Course> Course { get; set; }
         public DbSet<Price> Price { get; set; }
+        public DbSet<Comment> Comment { get; set; }
     }
 }
